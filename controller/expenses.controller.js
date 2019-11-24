@@ -2,9 +2,9 @@ const ExpenseService = require('../services/expenses.service');
 
 class ExpenseController {
 
-  async getExpnse (req, res, next) {
+  async getAllExpnse (req, res, next) {
     try {
-      const data = await ExpenseService.getExpnse();
+      const data = await ExpenseService.getAllExpnse();
       res.json({error: false, data: data})
       res.end();
     } catch(err) {

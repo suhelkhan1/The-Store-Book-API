@@ -1,5 +1,4 @@
 const ErrorInstance = require('custom-error-instance');
-const mongoose = require('mongoose');
 const Expenses = require('../models/expenses.model');
 
 
@@ -10,7 +9,7 @@ const CustomError = ErrorInstance('Fault', {
 
 class ExpensesService {
 
-  getExpnse(req, res, next) {
+  getAllExpnse(req, res, next) {
     return new Promise(async (resolve, reject) => {
       try {
         const data = await Expenses.find().exec();
