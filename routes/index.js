@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const expensesRoute = require('./expenses.route');
-const distributorRoute = require('./distributor.route');
 const connection = require('../config/connection');
 // const settings = require('../config/setting');
+
+const expensesRoute = require('./expenses.route');
+const distributorRoute = require('./distributor.route');
+const customerRoute = require('./customer.route');
 
 (async () => {
   try {
@@ -18,4 +20,5 @@ const connection = require('../config/connection');
 
 router.use(expensesRoute);
 router.use(distributorRoute);
+router.use(customerRoute);
 module.exports = router;

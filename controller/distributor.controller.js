@@ -2,7 +2,7 @@ const DistributorService = require('../services/distributor.service');
 
 class DistributorController {
 
-  async getAlldistributor (req, res, next) {
+  async getAllDistributor (req, res, next) {
     try {
       const data = await DistributorService.getAllDistributor();
       res.json({error: false, data: data})
@@ -12,7 +12,7 @@ class DistributorController {
     }
   }
 
-  async adddistributor (req, res, next) {
+  async addDistributor (req, res, next) {
     try {
       const data = await DistributorService.addDistributor(req, res, next);
       res.json({error: false, data: data})
@@ -22,7 +22,7 @@ class DistributorController {
     }
   }
 
-  async deletedistributor (req, res, next) {
+  async deleteDistributor (req, res, next) {
     try {
       const data = await DistributorService.deleteDistributor(req, res, next);
       res.json({error: false, data: data})
@@ -32,7 +32,7 @@ class DistributorController {
     }
   }
 
-  async updatedistributor (req, res, next) {
+  async updateDistributor (req, res, next) {
     try {
       const data = await DistributorService.updateDistributor(req, res, next);
       res.json({error: false, data: data})
