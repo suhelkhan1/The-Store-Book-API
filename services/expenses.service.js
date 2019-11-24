@@ -34,6 +34,30 @@ class ExpensesService {
       }
     });
   }
+
+  updateExpnse(req, res, next) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const id = req.params.id;
+        const data = await Expenses.updateOne({ _id: id }, { $set: req.body }, {runValidators: true}).exec();
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  deleteExpnse(req, res, next) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const id = req.params.id;
+        const data = await Expenses.remove({ _id: id }).exec();
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
 }
 
 module.exports = new ExpensesService();

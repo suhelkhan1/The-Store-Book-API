@@ -21,6 +21,26 @@ class ExpenseController {
       next(err);
     }
   }
+
+  async deleteExpnse (req, res, next) {
+    try {
+      const data = await ExpenseService.deleteExpnse(req, res, next);
+      res.json({error: false, data: data})
+      res.end();
+    } catch(err) {
+      next(err);
+    }
+  }
+
+  async updateExpnse (req, res, next) {
+    try {
+      const data = await ExpenseService.updateExpnse(req, res, next);
+      res.json({error: false, data: data})
+      res.end();
+    } catch(err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = new ExpenseController();
