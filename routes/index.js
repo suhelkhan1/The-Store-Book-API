@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const expensesRoute = require('./expensesRoute');
+const expensesRoute = require('./expenses.route');
 const connection = require('../config/connection');
 // const settings = require('../config/setting');
 

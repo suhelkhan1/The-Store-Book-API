@@ -1,4 +1,4 @@
-const ExpenseService = require('../services/ExpensesService');
+const ExpenseService = require('../services/expenses.service');
 
 class ExpenseController {
 
