@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon --inspect ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "custom-error-instance": "^2.1.1",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",

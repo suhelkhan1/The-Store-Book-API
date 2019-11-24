@@ -1,9 +1,19 @@
 var express = require('express');
 var router = express.Router();
+const expensesRoute = require('./expensesRoute');
+const connection = require('../config/connection');
+// const settings = require('../config/setting');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+(async () => {
+  try {
+    // const connectionObj = new Connection ({
+    //   dbUrl: settings.dbUrl
+    // })
+    connection.createConnection();
+  } catch (err) {
+    console.log(err);
+  }
+})();
 
+router.use(expensesRoute);
 module.exports = router;
