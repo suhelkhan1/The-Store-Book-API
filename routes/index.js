@@ -6,6 +6,7 @@ const connection = require('../config/connection');
 const expensesRoute = require('./expenses.route');
 const distributorRoute = require('./distributor.route');
 const customerRoute = require('./customer.route');
+const storeRoute = require('./store.route');
 
 (async () => {
   try {
@@ -21,4 +22,5 @@ const customerRoute = require('./customer.route');
 router.use(expensesRoute);
 router.use(distributorRoute);
 router.use(customerRoute);
+router.use(storeRoute);
 module.exports = router;
