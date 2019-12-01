@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const creditSchema = new mongoose.Schema({
-  description: String,
-  payment_status: String,
+  amount: Object,
   store_id: mongoose.ObjectId,
   distributor_id: mongoose.ObjectId,
   transaction_id: mongoose.ObjectId,
+  payment_status: Boolean,
 });
 
 module.exports = mongoose.model('credit', creditSchema);

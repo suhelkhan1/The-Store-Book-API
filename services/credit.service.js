@@ -1,5 +1,6 @@
 const ErrorInstance = require('custom-error-instance');
 const Credit = require('../models/credit.model');
+const TransactionService = require('../services/transaction.service');
 
 
 const CustomError = ErrorInstance('Fault', {
@@ -20,13 +21,31 @@ class CreditService {
     });
   }
 
+  getCreditByStore(req, res, next) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const id = req.params.store_id;
+        const credits = await Credit.find({ store_id: id }).exec();
+        const data = {
+          data: credits
+        };
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
   addCredit(req, res, next) {
     return new Promise(async (resolve, reject) => {
       try {
+        const transaction = await TransactionService.addTransaction(req, res, next);
+        console.log(transaction);
         const data = new Credit({
-          description: req.body.description,
           store_id: req.body.store_id,
           distributor_id: req.body.distributor_id,
+          amount: transaction,
+          payment_status: false
         });
         resolve(data.save());
       } catch (err) {

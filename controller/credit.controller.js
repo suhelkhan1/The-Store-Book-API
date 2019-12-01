@@ -12,6 +12,16 @@ class CreditController {
     }
   }
 
+  async getCreditByStore (req, res, next) {
+    try {
+      const data = await CreditService.getCreditByStore(req, res, next);
+      res.json({error: false, data: data})
+      res.end();
+    } catch(err) {
+      next(err);
+    }
+  }
+
   async addCredit (req, res, next) {
     try {
       const data = await CreditService.addCredit(req, res, next);

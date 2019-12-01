@@ -20,16 +20,27 @@ class TransactionService {
     });
   }
 
+  getTransactionById(id) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const data = await Transaction.find({_id: id}).exec();
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
   addTransaction(req, res, next) {
     return new Promise(async (resolve, reject) => {
       try {
-        const expense = new Transaction({
-          // _id: new mongoose.Types.ObjectId(),
-          name: req.body.name,
-          phone: req.body.phone,
+        const data = new Transaction({
+          amount: req.body.amount,
+          type: req.body.type,
           description: req.body.description,
+          store_id: req.body.store_id,
         });
-        resolve(expense.save());
+        resolve(data.save());
       } catch (err) {
         reject(err);
       }
