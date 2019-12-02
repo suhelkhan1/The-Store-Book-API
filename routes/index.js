@@ -9,6 +9,7 @@ const customerRoute = require('./customer.route');
 const storeRoute = require('./store.route');
 const userRoute = require('./user.route');
 const creditRoute = require('./credit.route');
+const customerBorrowRoute = require('./customer-borrow.route');
 
 (async () => {
   try {
@@ -27,4 +28,5 @@ router.use(customerRoute);
 router.use(storeRoute);
 router.use(userRoute);
 router.use(creditRoute);
+router.use(customerBorrowRoute);
 module.exports = router;

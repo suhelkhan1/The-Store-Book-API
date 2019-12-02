@@ -20,6 +20,17 @@ class DistributorService {
     });
   }
 
+  getDistributorById(req, res, next) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const data = await Distributor.findById(req.body.distributor_id).exec();
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
   addDistributor(req, res, next) {
     return new Promise(async (resolve, reject) => {
       try {

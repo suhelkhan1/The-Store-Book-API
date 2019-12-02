@@ -1,6 +1,7 @@
 const ErrorInstance = require('custom-error-instance');
 const Credit = require('../models/credit.model');
 const TransactionService = require('../services/transaction.service');
+const DistributorService = require('../services/distributor.service');
 
 
 const CustomError = ErrorInstance('Fault', {
@@ -40,11 +41,11 @@ class CreditService {
     return new Promise(async (resolve, reject) => {
       try {
         const transaction = await TransactionService.addTransaction(req, res, next);
-        console.log(transaction);
+        const distributor = await DistributorService.getDistributorById(req, res, next);
         const data = new Credit({
           store_id: req.body.store_id,
-          distributor_id: req.body.distributor_id,
           amount: transaction,
+          distributor: distributor,
           payment_status: false
         });
         resolve(data.save());

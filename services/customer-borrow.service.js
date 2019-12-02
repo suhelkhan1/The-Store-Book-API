@@ -1,5 +1,6 @@
 const ErrorInstance = require('custom-error-instance');
 const CustomerBorrow = require('../models/customer-borrow.model');
+const TransactionService = require('../services/transaction.service');
 
 
 const CustomError = ErrorInstance('Fault', {
@@ -20,13 +21,30 @@ class CustomerBorrowService {
     });
   }
 
+  getCustomerBorrowByStore(req, res, next) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const id = req.params.store_id;
+        const borrows = await CustomerBorrow.find({ store_id: id }).exec();
+        const data = {
+          data: borrows
+        };
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
   addCustomerBorrow(req, res, next) {
     return new Promise(async (resolve, reject) => {
       try {
+        const transaction = await TransactionService.addTransaction(req, res, next);
         const data = new CustomerBorrow({
           description: req.body.description,
           store_id: req.body.store_id,
           cutomer_id: req.body.cutomer_id,
+          amount: transaction,
         });
         resolve(data.save());
       } catch (err) {

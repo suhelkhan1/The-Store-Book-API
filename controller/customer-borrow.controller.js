@@ -12,6 +12,16 @@ class CustomerBorrowController {
     }
   }
 
+  async getCustomerBorrowByStore (req, res, next) {
+    try {
+      const data = await CustomerBorrowService.getCustomerBorrowByStore();
+      res.json({error: false, data: data})
+      res.end();
+    } catch(err) {
+      next(err);
+    }
+  }
+
   async addCustomerBorrow (req, res, next) {
     try {
       const data = await CustomerBorrowService.addCustomerBorrow(req, res, next);

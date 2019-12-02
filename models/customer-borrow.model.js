@@ -6,6 +6,7 @@ const customerBorrowSchema = new mongoose.Schema({
   store_id: mongoose.ObjectId,
   cutomer_id: mongoose.ObjectId,
   transaction_id: mongoose.ObjectId,
+  amount: Object
 });
 
 module.exports = mongoose.model('customer_borrow', customerBorrowSchema);
